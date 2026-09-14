@@ -1,0 +1,202 @@
+/* --- High-End Hospitality Branding variables --- */
+:root {
+    --luxury-sapphire: #0F1E36;   /* Deep Blue base styling */
+    --champagne-gold: #D4AF37;   /* Classic Gold accents */
+    --champagne-hover: #AA8413;
+    --ivory-white: #FCFBF7;       /* Off white high-end ambient glow */
+    --text-primary: #1C2430;
+    --text-muted: #5A6A80;
+    --card-surface: #FFFFFF;
+    --border-soft: #EAE6DF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--ivory-white);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: 70px 0 30px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--luxury-sapphire);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.section-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* --- Premium Navigation --- */
+header {
+    background-color: var(--luxury-sapphire);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    position: sticky;
+    top: 0; z-index: 1000;
+    border-bottom: 2px solid var(--champagne-gold);
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+header .logo i {
+    font-size: 2rem;
+    color: var(--champagne-gold);
+}
+
+header .logo h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+header .logo .sub-logo {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--champagne-gold);
+    letter-spacing: 2px;
+}
+
+header nav { display: flex; gap: 32px; }
+header nav a {
+    color: #E2E8F0; text-decoration: none; font-weight: 500; font-size: 1rem;
+    padding-bottom: 4px; transition: all 0.2s ease;
+}
+header nav a:hover, header nav a.active {
+    color: var(--champagne-gold);
+    border-bottom: 2px solid var(--champagne-gold);
+}
+
+/* --- Luxury Showcase Banner --- */
+.hero {
+    position: relative;
+    height: 50vh;
+    background: url('https://unsplash.com') center center/cover no-repeat;
+    display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+}
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 30, 54, 0.75);
+}
+.hero-content { position: relative; z-index: 2; max-width: 800px; padding: 0 24px; }
+.hero-tagline { color: var(--champagne-gold); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; }
+.hero h2 { font-size: 3.25rem; margin: 12px 0 18px; font-weight: 700; }
+.hero p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 30px; }
+
+.btn-primary {
+    display: inline-block; background-color: var(--champagne-gold); color: var(--luxury-sapphire);
+    padding: 16px 36px; font-weight: 700; text-decoration: none; text-transform: uppercase;
+    font-size: 0.9rem; letter-spacing: 1px; border-radius: 4px; transition: all 0.2s ease;
+}
+.btn-primary:hover { background-color: var(--champagne-hover); transform: translateY(-1px); }
+
+/* --- Property Portfolio Cards --- */
+.property-showcase-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px;
+}
+.showcase-card {
+    background-color: var(--card-surface); border-radius: 4px; overflow: hidden;
+    border: 1px solid var(--border-soft); cursor: pointer; transition: all 0.3s ease;
+}
+.showcase-card:hover {
+    transform: translateY(-4px); box-shadow: 0 16px 30px rgba(15,30,54,0.06);
+    border-color: var(--champagne-gold);
+}
+.card-img { height: 240px; background-size: cover; background-position: center; position: relative; }
+.card-badge { position: absolute; top: 16px; left: 16px; color: white; font-size: 0.75rem; font-weight: 700; padding: 6px 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.card-badge.service { background-color: #0d9488; }
+.card-badge.lease { background-color: #7c3aed; }
+
+.card-details { padding: 28px; }
+.card-details h3 { font-size: 1.4rem; color: var(--luxury-sapphire); margin-bottom: 8px; }
+.card-details .loc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 14px; }
+.card-details .desc { color: #4A5568; font-size: 0.95rem; margin-bottom: 24px; min-height: 72px; }
+.card-pricing { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-soft); padding-top: 18px; }
+.card-pricing .amt { font-size: 1.3rem; font-weight: 700; color: var(--luxury-sapphire); }
+.card-pricing .amt small { font-weight: 400; font-size: 0.85rem; color: var(--text-muted); }
+.card-pricing .select-action { font-size: 0.9rem; font-weight: 700; color: var(--champagne-gold); }
+
+/* --- Full Calendar Booking Engine Layout --- */
+.booking-container-layout {
+    display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; margin-top: 40px;
+}
+@media (max-width: 900px) { .booking-container-layout { grid-template-columns: 1fr; } }
+
+.booking-form-box { background-color: var(--card-surface); padding: 40px; border-radius: 4px; border: 1px solid var(--border-soft); }
+.booking-form-box h3 { font-size: 1.6rem; color: var(--luxury-sapphire); margin-bottom: 4px; }
+.selected-property-indicator { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 30px; }
+.selected-property-indicator strong { color: var(--champagne-gold); }
+
+.calendar-inputs-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-group { margin-bottom: 24px; }
+.form-group label { display: block; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: var(--luxury-sapphire); margin-bottom: 8px; letter-spacing: 0.5px; }
+.form-group input { width: 100%; padding: 14px; border: 1px solid #CBD5E1; border-radius: 4px; font-size: 1rem; outline: none; background-color: #FAFBFD; transition: all 0.2s; }
+.form-group input:focus { border-color: var(--champagne-gold); box-shadow: 0 0 0 3px rgba(212,175,55,0.1); }
+
+.booking-receipt-box { background-color: var(--luxury-sapphire); color: white; padding: 40px; border-radius: 4px; display: flex; flex-direction: column; justify-content: space-between; }
+.booking-receipt-box h4 { font-size: 1.3rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 14px; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; color: var(--champagne-gold); }
+.receipt-item { display: flex; justify-content: space-between; margin-bottom: 16px; color: #94A3B8; font-size: 0.95rem; }
+.receipt-item strong { color: #F1F5F9; }
+.receipt-total-row { display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 10px; font-size: 1.5rem; font-weight: 700; color: var(--champagne-gold); }
+
+.btn-whatsapp-booking { width: 100%; background-color: var(--champagne-gold); color: var(--luxury-sapphire); border: none; padding: 16px; font-size: 1rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; cursor: pointer; margin-top: 30px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.2s; }
+.btn-whatsapp-booking:hover { background-color: var(--champagne-hover); }
+
+/* --- Admin Console Layout Styles --- */
+.admin-dashboard-hero { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-soft); padding-bottom: 28px; margin-bottom: 40px; }
+@media (max-width: 768px) { .admin-dashboard-hero { flex-direction: column; align-items: flex-start; gap: 20px; } }
+.admin-dashboard-hero h2 { color: var(--luxury-sapphire); font-size: 2rem; margin-bottom: 6px; }
+.admin-dashboard-hero p { color: var(--text-muted); }
+
+.admin-metrics-wrapper { display: flex; gap: 20px; }
+.metric-block { background-color: var(--card-surface); border: 1px solid var(--border-soft); padding: 14px 24px; border-radius: 4px; text-align: center; }
+.metric-block span { display: block; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+.metric-block strong { font-size: 1.6rem; color: var(--luxury-sapphire); }
+.metric-block.critical strong { color: #DC2626; }
+
+.table-card-container { background-color: var(--card-surface); border: 1px solid var(--border-soft); border-radius: 4px; overflow-x: auto; }
+.luxury-admin-table { width: 100%; border-collapse: collapse; text-align: left; }
+.luxury-admin-table th, .luxury-admin-table td { padding: 18px 24px; border-bottom: 1px solid var(--border-soft); font-size: 0.95rem; }
+.luxury-admin-table th { background-color: #F8FAFC; color: var(--luxury-sapphire); font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; }
+
+.live-status { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
+.live-status.pending { color: #D97706; }
+.live-status.completed { color: #16A34A; }
+
+.action-btn-success, .action-btn-danger { padding: 8px 16px; border: none; border-radius: 4px; font-weight: 700; font-size: 0.85rem; cursor: pointer; color: white; }
+.action-btn-success { background-color: var(--luxury-sapphire); }
+.action-btn-success:hover { background-color: #1e3a66; }
+.action-btn-danger { background-color: #EF4444; }
+.action-btn-danger:hover { background-color: #DC2626; }
+
+footer { background-color: #0B1320; color: #64748B; text-align: center; padding: 40px 24px; margin-top: 80px; font-size: 0.85rem; border-top: 3px solid var(--champagne-gold); }

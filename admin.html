@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Destination Hospitality | Admin Console</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-hotel"></i>
+            <div>
+                <h1>Dream Destination</h1>
+                <span class="sub-logo">Internal Administration</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html">Explore Stays</a>
+            <a href="admin.html" class="active"><i class="fa-solid fa-user-shield"></i> Admin Portal</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <div class="admin-dashboard-hero">
+                <div>
+                    <h2>Property Operations & Housekeeping Log</h2>
+                    <p>Real-time oversight of turnover statuses, client checkouts, and clean validation loops across North Goa inventories.</p>
+                </div>
+                <div class="admin-metrics-wrapper">
+                    <div class="metric-block">
+                        <span>Active System Rentals</span>
+                        <strong>14</strong>
+                    </div>
+                    <div class="metric-block critical">
+                        <span>Action Required Cleans</span>
+                        <strong id="adminDirtyCounter">2</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operations Data Grid Table -->
+            <div class="table-card-container">
+                <table class="luxury-admin-table">
+                    <thead>
+                        <tr>
+                            <th>Room/Apartment Unit</th>
+                            <th>Geographic Sector</th>
+                            <th>Lease Classification</th>
+                            <th>Current Housekeeping Status</th>
+                            <th>Management Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="adminUnit101">
+                            <td><strong>Studio 101</strong></td>
+                            <td>Candolim Central</td>
+                            <td><span class="card-badge service">Short Term</span></td>
+                            <td><span id="labelStatus101" class="live-status pending"><i class="fa-solid fa-hourglass-half"></i> Dirty / Pending Turnover</span></td>
+                            <td><button class="action-btn-success" onclick="adminModifyHousekeeping('101')">Approve Clean</button></td>
+                        </tr>
+                        <tr id="adminUnit204">
+                            <td><strong>Apartment 204</strong></td>
+                            <td>Calangute Beach Road</td>
+                            <td><span class="card-badge lease">Long Lease</span></td>
+                            <td><span id="labelStatus204" class="live-status completed"><i class="fa-solid fa-check-double"></i> Ready / Active Inspected</span></td>
+                            <td><button class="action-btn-danger" onclick="adminModifyHousekeeping('204')">Flag Vacated / Dirty</button></td>
+                        </tr>
+                        <tr id="adminUnit302">
+                            <td><strong>Villa Suite 302</strong></td>
+                            <td>Anjuna Coastline</td>
+                            <td><span class="card-badge service">Short Term</span></td>
+                            <td><span id="labelStatus302" class="live-status pending"><i class="fa-solid fa-hourglass-half"></i> Dirty / Pending Turnover</span></td>
+                            <td><button class="action-btn-success" onclick="adminModifyHousekeeping('302')">Approve Clean</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dream Destination Hospitality Company | Internal Secured Management Systems.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

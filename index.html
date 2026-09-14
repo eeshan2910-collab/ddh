@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Destination Hospitality | Premium North Goa Accommodation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <!-- Luxury Navigation Header -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-hotel"></i>
+            <div>
+                <h1>Dream Destination</h1>
+                <span class="sub-logo">Hospitality</span>
+            </div>
+        </div>
+        <nav>
+            <a href="index.html" class="active">Explore Stays</a>
+            <a href="admin.html"><i class="fa-solid fa-user-shield"></i> Admin Portal</a>
+        </nav>
+    </header>
+
+    <!-- Premium Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tagline">Curated Stays across North Goa</span>
+            <h2>Find Your Perfect Escape</h2>
+            <p>From beachside luxury studios with full room service to elite long-term apartment leasing.</p>
+            <a href="#booking-section" class="btn-primary">Reserve Accommodation</a>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <!-- Live Property Catalog List -->
+        <section id="properties-section" class="section">
+            <div class="section-header">
+                <h2>Our Premium Portfolio</h2>
+                <p>Select a property to view rates and initialize your booking dates below.</p>
+            </div>
+
+            <div class="property-showcase-grid">
+                <!-- Property Card 1 -->
+                <div class="showcase-card" onclick="selectProperty('Premium Studio Suite (Candolim)', 3500, 'short')">
+                    <div class="card-img" style="background-image: url('https://unsplash.com');">
+                        <span class="card-badge service">Room Service</span>
+                    </div>
+                    <div class="card-details">
+                        <h3>Premium Studio Suite</h3>
+                        <p class="loc"><i class="fa-solid fa-location-dot"></i> Candolim, North Goa</p>
+                        <p class="desc">Includes 24/7 dedicated room service, swimming pool access, everyday premium housekeeping, and high-speed Wi-Fi.</p>
+                        <div class="card-pricing">
+                            <span class="amt">₹3,500 <small>/ night</small></span>
+                            <span class="select-action">Select Property <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="showcase-card" onclick="selectProperty('Coastal 1BHK Apartment (Calangute)', 28000, 'long')">
+                    <div class="card-img" style="background-image: url('https://unsplash.com');">
+                        <span class="card-badge lease">Leasing Option</span>
+                    </div>
+                    <div class="card-details">
+                        <h3>Coastal 1BHK Apartment</h3>
+                        <p class="loc"><i class="fa-solid fa-location-dot"></i> Calangute, North Goa</p>
+                        <p class="desc">Fully furnished modern layout optimized for corporate remote professionals. Perfect for long-term residential leasing.</p>
+                        <div class="card-pricing">
+                            <span class="amt">₹28,000 <small>/ month</small></span>
+                            <span class="select-action">Select Property <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 3 -->
+                <div class="showcase-card" onclick="selectProperty('Heritage Guest House (Anjuna)', 4200, 'short')">
+                    <div class="card-img" style="background-image: url('https://unsplash.com');">
+                        <span class="card-badge service">Room Service</span>
+                    </div>
+                    <div class="card-details">
+                        <h3>Heritage Guest House</h3>
+                        <p class="loc"><i class="fa-solid fa-location-dot"></i> Anjuna, North Goa</p>
+                        <p class="desc">Traditional Goan architecture blended seamlessly with on-demand room services, breakfast, and instant beach access.</p>
+                        <div class="card-pricing">
+                            <span class="amt">₹4,200 <small>/ night</small></span>
+                            <span class="select-action">Select Property <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Full Calendar Booking Engine -->
+        <section id="booking-section" class="section">
+            <div class="booking-container-layout">
+                <!-- Inputs and Dates -->
+                <div class="booking-form-box">
+                    <h3>Configure Your Reservation</h3>
+                    <p class="selected-property-indicator">Selected: <strong id="activePropertyName">Premium Studio Suite (Candolim)</strong></p>
+                    
+                    <div class="calendar-inputs-row">
+                        <div class="form-group">
+                            <label for="checkInDate"><i class="fa-solid fa-calendar-plus"></i> Check-In Date</label>
+                            <input type="date" id="checkInDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkOutDate"><i class="fa-solid fa-calendar-minus"></i> Check-Out Date</label>
+                            <input type="date" id="checkOutDate">
+                        </div>
+                    </div>
+
+                    <div class="calendar-inputs-row">
+                        <div class="form-group">
+                            <label for="roomsCount"><i class="fa-solid fa-door-open"></i> Number of Rooms</label>
+                            <input type="number" id="roomsCount" value="1" min="1" max="10">
+                        </div>
+                        <div class="form-group">
+                            <label for="guestsCount"><i class="fa-solid fa-users"></i> Guests</label>
+                            <input type="number" id="guestsCount" value="2" min="1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Direct Itemized Receipt -->
+                <div class="booking-receipt-box">
+                    <h4>Reservation Invoice</h4>
+                    <div class="receipt-list">
+                        <div class="receipt-item">
+                            <span>Base Stay Charges (<span id="calculatedDays">0</span> Units)</span>
+                            <strong id="receiptBase">₹0</strong>
+                        </div>
+                        <div class="receipt-item">
+                            <span>GST / Local Accommodations Tax (12%)</span>
+                            <strong id="receiptTax">₹0</strong>
+                        </div>
+                        <div class="receipt-item">
+                            <span>Property Turnkey & Setup Fee</span>
+                            <strong id="receiptService">₹0</strong>
+                        </div>
+                        <div class="receipt-total-row">
+                            <span>Total Gross Sum</span>
+                            <strong id="receiptTotal">₹0</strong>
+                        </div>
+                    </div>
+                    <button class="btn-whatsapp-booking" onclick="sendWhatsAppBookingData()">
+                        <i class="fa-brands fa-whatsapp"></i> Confirm Booking via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Dream Destination Hospitality Company. Premium Managed Living across North Goa, India.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
