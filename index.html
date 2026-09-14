@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <!-- Luxury Navigation Header -->
     <header>
         <div class="logo">
             <i class="fa-solid fa-hotel"></i>
@@ -24,7 +22,6 @@
         </nav>
     </header>
 
-    <!-- Premium Hero Section -->
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -36,17 +33,13 @@
     </section>
 
     <main class="container">
-        
-        <!-- Live Property Catalog List -->
         <section id="properties-section" class="section">
             <div class="section-header">
                 <h2>Our Premium Portfolio</h2>
-                <p>Select a property to view rates and initialize your booking dates below.</p>
+                <p>Click any property card to view its rich photo gallery, full amenities list, and custom location details.</p>
             </div>
-
             <div class="property-showcase-grid">
-                <!-- Property Card 1 -->
-                <div class="showcase-card" onclick="selectProperty('Premium Studio Suite (Candolim)', 3500, 'short')">
+                <div class="showcase-card" onclick="openPropertyGalleryModal('studio')">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80');">
                         <span class="card-badge service">Room Service</span>
                     </div>
@@ -56,13 +49,11 @@
                         <p class="desc">Includes 24/7 dedicated room service, swimming pool access, everyday premium housekeeping, and high-speed Wi-Fi.</p>
                         <div class="card-pricing">
                             <span class="amt">₹3,500 <small>/ night</small></span>
-                            <span class="select-action">Select Property <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="select-action">View Details & Photos <i class="fa-solid fa-circle-info"></i></span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Property Card 2 -->
-                <div class="showcase-card" onclick="selectProperty('Coastal 1BHK Apartment (Calangute)', 28000, 'long')">
+                <div class="showcase-card" onclick="openPropertyGalleryModal('apartment')">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80');">
                         <span class="card-badge lease">Leasing Option</span>
                     </div>
@@ -72,13 +63,11 @@
                         <p class="desc">Fully furnished modern layout optimized for corporate remote professionals. Perfect for long-term residential leasing.</p>
                         <div class="card-pricing">
                             <span class="amt">₹28,000 <small>/ month</small></span>
-                            <span class="select-action">Select Property <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="select-action">View Details & Photos <i class="fa-solid fa-circle-info"></i></span>
                         </div>
                     </div>
                 </div>
-
-                <!-- Property Card 3 -->
-                <div class="showcase-card" onclick="selectProperty('Heritage Guest House (Anjuna)', 4200, 'short')">
+                <div class="showcase-card" onclick="openPropertyGalleryModal('guesthouse')">
                     <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80');">
                         <span class="card-badge service">Room Service</span>
                     </div>
@@ -88,26 +77,43 @@
                         <p class="desc">Traditional Goan architecture blended seamlessly with on-demand room services, breakfast, and instant beach access.</p>
                         <div class="card-pricing">
                             <span class="amt">₹4,200 <small>/ night</small></span>
-                            <span class="select-action">Select Property <i class="fa-solid fa-arrow-right"></i></span>
+                            <span class="select-action">View Details & Photos <i class="fa-solid fa-circle-info"></i></span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Full Calendar Booking Engine -->
+        <div id="dynamicPropertyModal" class="modal-layer-overlay">
+            <div class="modal-content-card">
+                <span class="close-modal-trigger" onclick="closePropertyGalleryModal()">&times;</span>
+                <div class="modal-gallery-slider">
+                    <button class="slider-arrow prev" onclick="shiftModalImage(-1)">&#10094;</button>
+                    <div id="sliderImageWindow" class="slider-image-view"></div>
+                    <button class="slider-arrow next" onclick="shiftModalImage(1)">&#10095;</button>
+                </div>
+                <div class="modal-details-body">
+                    <h3 id="modalPropertyTitle">Property Title</h3>
+                    <p id="modalPropertyLocation" class="modal-loc-sub"><i class="fa-solid fa-location-dot"></i> Location</p>
+                    <p id="modalPropertyLongDesc" class="modal-long-description">Detailed descriptive text goes here...</p>
+                    <div class="amenities-block">
+                        <h4>Premium Amenities & Facilities</h4>
+                        <div id="modalAmenitiesGrid" class="amenities-tag-grid"></div>
+                    </div>
+                    <button class="btn-primary modal-action-select" onclick="bindPropertyToBookingForm()">Select Property</button>
+                </div>
+            </div>
+        </div>
+
         <section id="booking-section" class="section">
             <div class="booking-container-layout">
-                <!-- Inputs and Dates -->
                 <div class="booking-form-box">
                     <h3>Configure Your Reservation</h3>
-                    <p class="selected-property-indicator">Selected: <strong id="activePropertyName">Premium Studio Suite (Candolim)</strong></p>
-                    
+                    <p class="selected-property-indicator">Selected Property: <strong id="activePropertyName">Premium Studio Suite (Candolim)</strong></p>
                     <div class="form-group">
                         <label for="guestNameInput"><i class="fa-solid fa-user"></i> Primary Guest Full Name</label>
                         <input type="text" id="guestNameInput" placeholder="Enter guest name for database logging" required>
                     </div>
-
                     <div class="calendar-inputs-row">
                         <div class="form-group">
                             <label for="checkInDate"><i class="fa-solid fa-calendar-plus"></i> Check-In Date</label>
@@ -118,7 +124,6 @@
                             <input type="date" id="checkOutDate">
                         </div>
                     </div>
-
                     <div class="calendar-inputs-row">
                         <div class="form-group">
                             <label for="roomsCount"><i class="fa-solid fa-door-open"></i> Number of Rooms</label>
@@ -130,8 +135,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Direct Itemized Receipt -->
                 <div class="booking-receipt-box">
                     <h4>Reservation Invoice</h4>
                     <div class="receipt-list">
@@ -140,11 +143,11 @@
                             <strong id="receiptBase">₹0</strong>
                         </div>
                         <div class="receipt-item">
-                            <span>GST / Local Accommodations Tax (12%)</span>
+                            <span>GST / Local Tax (12%)</span>
                             <strong id="receiptTax">₹0</strong>
                         </div>
                         <div class="receipt-item">
-                            <span>Property Turnkey & Setup Fee</span>
+                            <span>Property Turnkey Fee</span>
                             <strong id="receiptService">₹0</strong>
                         </div>
                         <div class="receipt-total-row">
@@ -153,30 +156,25 @@
                         </div>
                     </div>
                     <button id="submitBookingBtn" class="btn-whatsapp-booking" onclick="executeDualBookingWorkflow()">
-                        <i class="fa-solid fa-paper-plane"></i> Finalize & Confirm Booking
+                        <i class="fa-solid fa-paper-plane"></i> Finalize Booking
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Terms & Policies Section -->
-        <section class="section policy-block">
-            <div class="policy-card-inline">
-                <h4><i class="fa-solid fa-circle-info"></i> Dream Destination Core Guest Policies</h4>
-                <ul>
-                    <li><strong>Check-in / Check-out:</strong> Standard Check-In starts from 14:00 hrs. Check-Out cutoff is static at 11:00 hrs.</li>
-                    <li><strong>Leasing Agreements:</strong> Long-term rental structures necessitate a 1-month baseline security deposit logged into the corporate registry before key handover.</li>
-                    <li><strong>Room Services Code:</strong> Active guest houses offer structural room amenities between 07:00 hrs and 23:00 hrs daily.</li>
-                </ul>
+        <section id="map-section" class="section">
+            <div class="section-header">
+                <h2>Our North Goa Presence</h2>
+                <p>Explore our strategic operational hubs spanning across Candolim, Calangute, and Anjuna.</p>
+            </div>
+            <div class="map-frame-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d61502.94646543187!2d73.7315183498305!3d15.541916327375253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCandolim%20Calangute%20Anjuna%20Goa!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
-
     </main>
-
     <footer>
         <p>&copy; 2026 Dream Destination Hospitality Company. Premium Managed Living across North Goa, India.</p>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
